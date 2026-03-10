@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Moyassar & Mariam 💍</title>
+  <title>Moyassar & Mariam's Wedding 💍</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -17,27 +17,6 @@
       font-family: 'Lato', sans-serif;
       color: #4a4a4a;
       overflow-x: hidden;
-    }
-
-    .leaf-top-left {
-      position: fixed;
-      top: -10px;
-      left: -10px;
-      width: 280px;
-      opacity: 0.85;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .leaf-bottom-right {
-      position: fixed;
-      bottom: -10px;
-      right: -10px;
-      width: 280px;
-      opacity: 0.85;
-      transform: rotate(180deg);
-      pointer-events: none;
-      z-index: 0;
     }
 
     .card {
@@ -245,19 +224,36 @@
 
     .toast.show { transform: translateX(-50%) translateY(0); }
 
+    /* ===== REAL FLOWER PETALS ===== */
     .petal {
       position: fixed;
-      top: -20px;
-      font-size: 1.2rem;
-      animation: fall linear infinite;
+      top: -60px;
+      width: 30px;
+      height: 30px;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.6;
+      animation: fall linear infinite;
+    }
+
+    .petal img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     @keyframes fall {
-      0%   { transform: translateY(-20px) rotate(0deg); opacity: 0.6; }
-      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+      0% {
+        transform: translateY(-60px) rotate(0deg) scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(50vh) rotate(180deg) translateX(30px) scale(0.9);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg) translateX(-20px) scale(0.7);
+        opacity: 0;
+      }
     }
 
     @media (max-width: 480px) {
@@ -272,7 +268,7 @@
   <div id="petals"></div>
 
   <div class="card">
-    <p class="welcome-label">✦ Welcome to ✦</p>
+    <p class="welcome-label">✦ Welcome to Moyassar & Mariam's Wedding ✦</p>
 
     <div class="names">
       Moyassar
@@ -288,7 +284,7 @@
       Every love story is beautiful,<br/>
       but <strong>ours is our favorite.</strong><br/><br/>
       We're so grateful you're here to celebrate<br/>
-      this magical chapter with us. 💚
+      this magical chapter with us.
     </p>
 
     <div class="event-details">
@@ -297,16 +293,16 @@
       <span>Villa Vida, King Mariout</span>
     </div>
 
-    <p class="upload-title">📸 Share Your Memories With Us</p>
+    <p class="upload-title">Share Your Memories With Us</p>
 
     <div class="btn-group">
-      <button class="btn btn-photos" 
+      <button class="btn btn-photos"
         onclick="document.getElementById('photoInput').click()">
-        🌸 Upload Photos
+        Upload Photos
       </button>
-      <button class="btn btn-videos" 
+      <button class="btn btn-videos"
         onclick="document.getElementById('videoInput').click()">
-        🎥 Upload Videos
+        Upload Videos
       </button>
     </div>
 
@@ -328,25 +324,99 @@
 
   <div class="toast" id="toast">✅ Uploaded Successfully!</div>
 
-    <script>
-    // ⚠️ PASTE YOUR APPS SCRIPT URL BETWEEN THE QUOTES BELOW
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1LAexYbomimgh-HhPUmG2oC5KZW_1ZpCqEuGuBAWR81BDcrjS9KL225B5V5637lVI/exec'
+  <script>
+    // ⚠️ YOUR APPS SCRIPT URL
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1LAexYbomimgh-HhPUmG2oC5KZW_1ZpCqEuGuBAWR81BDcrjS9KL225B5V5637lVI/exec';
 
-    // Falling petals
+    // ===== REAL FLOWER PETALS =====
     const petalsContainer = document.getElementById('petals');
-    const petalEmojis = ['🌸', '🌿', '🍃', '🌼'];
-    for (let i = 0; i < 18; i++) {
-      const p = document.createElement('div');
-      p.classList.add('petal');
-      p.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
-      p.style.left = Math.random() * 100 + 'vw';
-      p.style.animationDuration = (6 + Math.random() * 10) + 's';
-      p.style.animationDelay = (Math.random() * 10) + 's';
-      p.style.fontSize = (0.8 + Math.random() * 1.2) + 'rem';
-      petalsContainer.appendChild(p);
+
+    const petalSVGs = [
+      // Pink rose petal
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="60" rx="30" ry="40"
+          fill="#f4a7b9" opacity="0.85"
+          transform="rotate(-15 50 50)"/>
+        <ellipse cx="50" cy="60" rx="20" ry="30"
+          fill="#f8c8d4" opacity="0.5"
+          transform="rotate(-15 50 50)"/>
+      </svg>`,
+
+      // White petal
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="60" rx="28" ry="42"
+          fill="#ffffff" opacity="0.9"
+          stroke="#f0d0d8" stroke-width="2"
+          transform="rotate(10 50 50)"/>
+        <ellipse cx="50" cy="60" rx="18" ry="28"
+          fill="#fce8ed" opacity="0.5"
+          transform="rotate(10 50 50)"/>
+      </svg>`,
+
+      // Light pink petal
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="55" rx="25" ry="38"
+          fill="#f9b8c8" opacity="0.8"
+          transform="rotate(20 50 50)"/>
+        <ellipse cx="50" cy="58" rx="15" ry="25"
+          fill="#fcd5df" opacity="0.5"
+          transform="rotate(20 50 50)"/>
+      </svg>`,
+
+      // Deep pink petal
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="60" rx="22" ry="35"
+          fill="#e8809a" opacity="0.75"
+          transform="rotate(-25 50 50)"/>
+        <ellipse cx="50" cy="60" rx="14" ry="22"
+          fill="#f0a0b5" opacity="0.5"
+          transform="rotate(-25 50 50)"/>
+      </svg>`,
+
+      // Green leaf
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="55" rx="18" ry="35"
+          fill="#7aab6d" opacity="0.7"
+          transform="rotate(5 50 50)"/>
+        <line x1="50" y1="20" x2="50" y2="85"
+          stroke="#5a9050" stroke-width="1.5" opacity="0.6"/>
+      </svg>`,
+
+      // Cream petal
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="58" rx="26" ry="38"
+          fill="#fef0e6" opacity="0.9"
+          stroke="#f5d5c0" stroke-width="1.5"
+          transform="rotate(-10 50 50)"/>
+        <ellipse cx="50" cy="60" rx="16" ry="24"
+          fill="#fde0cc" opacity="0.4"
+          transform="rotate(-10 50 50)"/>
+      </svg>`,
+    ];
+
+    for (let i = 0; i < 25; i++) {
+      const wrapper    = document.createElement('div');
+      wrapper.classList.add('petal');
+
+      const svgContent = petalSVGs[Math.floor(Math.random() * petalSVGs.length)];
+      const blob       = new Blob([svgContent], { type: 'image/svg+xml' });
+      const url        = URL.createObjectURL(blob);
+
+      const img  = document.createElement('img');
+      img.src    = url;
+      wrapper.appendChild(img);
+
+      const size = 20 + Math.random() * 25;
+      wrapper.style.left               = Math.random() * 100 + 'vw';
+      wrapper.style.width              = size + 'px';
+      wrapper.style.height             = size + 'px';
+      wrapper.style.animationDuration  = (7 + Math.random() * 10) + 's';
+      wrapper.style.animationDelay     = (Math.random() * 12) + 's';
+
+      petalsContainer.appendChild(wrapper);
     }
 
-    // Upload handler
+    // ===== UPLOAD HANDLER =====
     async function handleUpload(files, type) {
       if (!files || files.length === 0) return;
 
@@ -368,9 +438,8 @@
           `Uploading ${uploaded + 1} of ${total}: ${file.name}`;
 
         try {
-          // Convert file to base64
-          const base64    = await toBase64(file);
-          const fileData  = base64.split(',')[1];
+          const base64   = await toBase64(file);
+          const fileData = base64.split(',')[1];
 
           const response = await fetch(SCRIPT_URL, {
             method : 'POST',
@@ -386,7 +455,10 @@
           if (!result.success) throw new Error(result.error);
 
           uploaded++;
-          progressBar.style.width = ((uploaded / total) * 100) + '%';
+          progressBar.style.width =
+            ((uploaded / total) * 100) + '%';
+          progressLabel.textContent =
+            `✅ Done ${uploaded} of ${total}`;
 
         } catch (err) {
           statusEl.classList.add('error');
@@ -404,16 +476,17 @@
       document.getElementById('videoInput').value = '';
     }
 
-    // Convert file to base64
+    // ===== CONVERT TO BASE64 =====
     function toBase64(file) {
       return new Promise((resolve, reject) => {
-        const reader    = new FileReader();
-        reader.onload   = () => resolve(reader.result);
-        reader.onerror  = reject;
+        const reader   = new FileReader();
+        reader.onload  = () => resolve(reader.result);
+        reader.onerror = reject;
         reader.readAsDataURL(file);
       });
     }
 
+    // ===== TOAST =====
     function showToast(msg) {
       const toast = document.getElementById('toast');
       toast.textContent = msg;
