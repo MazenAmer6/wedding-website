@@ -33,10 +33,9 @@
       margin: 40px auto;
     }
 
-    .welcome-label {
-      font-size: 0.85rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
+      .welcome-label {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.6rem;
       color: #7aab6d;
       margin-bottom: 10px;
     }
@@ -172,11 +171,10 @@
 
     .status.error { color: #c0605a; }
 
-    .footer {
+     .footer {
+      font-family: 'Great Vibes', cursive;
       margin-top: 30px;
-      font-size: 0.72rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      font-size: 1.4rem;
       color: #c0c8b8;
     }
 
@@ -238,12 +236,21 @@
       }
       .names { font-size: 3.2rem; }
       .message { font-size: 1.45rem; }
-      .btn {
-        font-size: 1.3rem;
-        padding: 14px 24px;
-        width: 100%;
-        justify-content: center;
-      }
+         .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 34px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+    }
       .btn-group {
         flex-direction: column;
         align-items: center;
