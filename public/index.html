@@ -73,27 +73,18 @@
       background: linear-gradient(to right, transparent, #b8d4a8, transparent);
     }
 
-    /* ===== NEW MESSAGE STYLE ===== */
+    /* ===== MESSAGE ===== */
     .message {
       font-family: 'Great Vibes', cursive;
-      font-size: 1.8rem;
-      line-height: 1.9;
+      font-size: 1.75rem;
+      line-height: 2;
       color: #3a3a3a;
       max-width: 460px;
-      margin: 0 auto 10px;
+      margin: 0 auto 30px;
     }
 
     .message strong {
       color: #27592d;
-      display: block;
-    }
-
-    .upload-title {
-      font-size: 0.85rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #9aab8d;
-      margin: 30px 0 16px;
     }
 
     .btn-group {
@@ -107,17 +98,15 @@
     .btn {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
-      padding: 14px 30px;
+      padding: 14px 34px;
       border-radius: 50px;
-      font-size: 0.9rem;
-      font-family: 'Lato', sans-serif;
-      font-weight: 400;
-      letter-spacing: 1.5px;
+      font-size: 1.4rem;
+      font-family: 'Great Vibes', cursive;
       cursor: pointer;
       border: none;
       transition: all 0.3s ease;
-      text-transform: uppercase;
     }
 
     .btn-photos {
@@ -209,7 +198,7 @@
 
     .toast.show { transform: translateX(-50%) translateY(0); }
 
-    /* ===== PETALS — MOBILE FRIENDLY ===== */
+    /* ===== PETALS ===== */
     .petal {
       position: fixed;
       top: -60px;
@@ -248,9 +237,10 @@
         width: 92%;
       }
       .names { font-size: 3.2rem; }
+      .message { font-size: 1.45rem; }
       .btn {
+        font-size: 1.3rem;
         padding: 14px 24px;
-        font-size: 0.85rem;
         width: 100%;
         justify-content: center;
       }
@@ -258,18 +248,12 @@
         flex-direction: column;
         align-items: center;
       }
-      .message {
-        font-size: 1.5rem;
-      }
-      /* Bigger petals on mobile so they are visible */
-      .petal {
-        opacity: 1 !important;
-      }
+      .petal { opacity: 1 !important; }
     }
 
     @media (max-width: 360px) {
-      .names { font-size: 2.8rem; }
-      .message { font-size: 1.3rem; }
+      .names  { font-size: 2.8rem; }
+      .message { font-size: 1.25rem; }
     }
   </style>
 </head>
@@ -278,6 +262,7 @@
   <div id="petals"></div>
 
   <div class="card">
+
     <p class="welcome-label">✦ Welcome to Moyassar & Mariam's Wedding ✦</p>
 
     <div class="names">
@@ -290,17 +275,13 @@
       <span>🌿</span>
     </div>
 
-    <!-- ===== NEW MESSAGE ===== -->
+    <!-- ===== ONE PARAGRAPH MESSAGE ===== -->
     <p class="message">
-      Some of the most beautiful moments<br/>
-      are the ones we didn't see.<br/><br/>
-      <strong>We would love to see our wedding<br/>
-      through your eyes.</strong><br/><br/>
-      Please share your photos and videos with us<br/>
-      so these memories can live on forever.
+      Some of the most beautiful moments are the ones we didn't see.
+      We would love to see our wedding through your eyes.
+      <strong>Please share your photos and videos with us
+      so these memories can live on forever.</strong>
     </p>
-
-    <p class="upload-title">Share Your Memories With Us</p>
 
     <div class="btn-group">
       <button class="btn btn-photos"
@@ -448,9 +429,7 @@
     ];
 
     // ===== DETECT MOBILE =====
-    const isMobile = window.innerWidth <= 768;
-
-    // More petals on mobile, bigger size
+    const isMobile    = window.innerWidth <= 768;
     const petalCount  = isMobile ? 30 : 25;
     const minSize     = isMobile ? 28 : 20;
     const maxSize     = isMobile ? 45 : 35;
@@ -458,7 +437,7 @@
     const maxDuration = isMobile ? 10 : 10;
 
     for (let i = 0; i < petalCount; i++) {
-      const wrapper = document.createElement('div');
+      const wrapper    = document.createElement('div');
       wrapper.classList.add('petal');
 
       const svgContent = petalSVGs[Math.floor(Math.random() * petalSVGs.length)];
@@ -474,7 +453,7 @@
       wrapper.style.left              = Math.random() * 100 + 'vw';
       wrapper.style.width             = size + 'px';
       wrapper.style.height            = size + 'px';
-      wrapper.style.opacity           = (0.7 + Math.random() * 0.3).toString();
+      wrapper.style.opacity           = (0.75 + Math.random() * 0.25).toString();
       wrapper.style.animationDuration = (minDuration + Math.random() * maxDuration) + 's';
       wrapper.style.animationDelay    = (Math.random() * 12) + 's';
 
