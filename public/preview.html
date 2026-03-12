@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Page Preview 💍</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      background-color: #fdfaf6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lato', sans-serif;
+      color: #4a4a4a;
+      overflow-x: hidden;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1.5px solid #1a6b45;
+      border-radius: 4px;
+      padding: 60px 50px;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+      margin: 40px auto;
+    }
+
+    /* Inner border */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      border: 1px solid #1a6b45;
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Corner brackets */
+    .corner {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      z-index: 3;
+    }
+
+    .corner-tl {
+      top: 3px; left: 3px;
+      border-top: 3px solid #1a6b45;
+      border-left: 3px solid #1a6b45;
+    }
+
+    .corner-tr {
+      top: 3px; right: 3px;
+      border-top: 3px solid #1a6b45;
+      border-right: 3px solid #1a6b45;
+    }
+
+    .corner-bl {
+      bottom: 3px; left: 3px;
+      border-bottom: 3px solid #1a6b45;
+      border-left: 3px solid #1a6b45;
+    }
+
+    .corner-br {
+      bottom: 3px; right: 3px;
+      border-bottom: 3px solid #1a6b45;
+      border-right: 3px solid #1a6b45;
+    }
+
+    .welcome-label {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1rem;
+      color: #7aab6d;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .names {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4.5rem;
+      color: #3a3a3a;
+      line-height: 1.1;
+      margin-bottom: 5px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ampersand {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: #7aab6d;
+      display: block;
+      margin: -5px 0;
+    }
+
+    /* Divider with bouquet image */
+        .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px auto;
+      max-width: 500px;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #b8d4a8, transparent);
+    }
+
+    .divider-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bouquet-img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      transform: rotate(45deg);
+    }
+
+    @media (max-width: 480px) {
+      .bouquet-img { width: 160px; }
+    }
+
+    .message {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.75rem;
+      line-height: 2;
+      color: #3a3a3a;
+      max-width: 460px;
+      margin: 0 auto 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .message strong { color: #27592d; }
+
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 34px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-photos {
+      background: #27592d;
+      color: white;
+      box-shadow: 0 6px 20px rgba(122, 171, 109, 0.35);
+    }
+
+    .btn-photos:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(122, 171, 109, 0.5);
+    }
+
+    .btn-videos {
+      background: #27592d;
+      color: white;
+      box-shadow: 0 6px 20px rgba(168, 197, 160, 0.4);
+    }
+
+    .btn-videos:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px #a8c5a08c;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.4rem;
+      color: #c0c8b8;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Petals */
+    .petal {
+      position: fixed;
+      top: -60px;
+      pointer-events: none;
+      z-index: 2;
+      animation: fall linear infinite;
+    }
+
+    .petal img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-60px) rotate(0deg) scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(50vh) rotate(180deg) translateX(20px) scale(0.9);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg) translateX(-15px) scale(0.7);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 40px 24px; margin: 20px auto; width: 92%; }
+      .names { font-size: 3.2rem; }
+      .message { font-size: 1.45rem; }
+      .btn { padding: 14px 24px; width: 100%; justify-content: center; }
+      .btn-group { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="petals"></div>
+
+  <div class="card">
+
+    <!-- Corner Brackets -->
+    <div class="corner corner-tl"></div>
+    <div class="corner corner-tr"></div>
+    <div class="corner corner-bl"></div>
+    <div class="corner corner-br"></div>
+
+    <p class="welcome-label">✦ Welcome to Moyassar & Mariam's Wedding ✦</p>
+
+    <div class="names">
+      Moyassar
+      <span class="ampersand">&</span>
+      Mariam
+    </div>
+
+    <!-- BOUQUET — place bouquet.png in same folder as this file to preview -->
+        <div class="divider">
+      <span class="divider-line"></span>
+      <span class="divider-icon">
+        <img
+          src="bouquet.png"
+          alt="Wedding Bouquet"
+          class="bouquet-img"
+          onerror="this.style.display='none'"/>
+      </span>
+      <span class="divider-line"></span>
+    </div>
+
+    <p class="message">
+      Some of the most beautiful moments are the ones we didn't see.
+      We would love to see our wedding through your eyes.
+      <strong>Please share your photos and videos with us
+      so these memories can live on forever.</strong>
+    </p>
+
+    <div class="btn-group">
+      <button class="btn btn-photos">
+        Upload Photos
+      </button>
+      <button class="btn btn-videos">
+        Upload Videos
+      </button>
+    </div>
+
+    <p class="footer">✦ Moyassar & Mariam · 2026 ✦</p>
+  </div>
+
+  <script>
+    // White & Green Petals
+    const petalsContainer = document.getElementById('petals');
+
+    const petalSVGs = [
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="58" rx="28" ry="42"
+          fill="#ffffff" opacity="0.95"
+          stroke="#d4e6c3" stroke-width="2"
+          transform="rotate(-12 50 50)"/>
+        <ellipse cx="50" cy="56" rx="16" ry="26"
+          fill="#f0f7ec" opacity="0.6"
+          transform="rotate(-12 50 50)"/>
+      </svg>`,
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="58" rx="24" ry="38"
+          fill="#ffffff" opacity="0.92"
+          stroke="#c8e0b8" stroke-width="1.5"
+          transform="rotate(18 50 50)"/>
+        <ellipse cx="50" cy="56" rx="14" ry="23"
+          fill="#f5faf2" opacity="0.5"
+          transform="rotate(18 50 50)"/>
+      </svg>`,
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="55" rx="18" ry="38"
+          fill="#7aab6d" opacity="0.85"
+          transform="rotate(5 50 50)"/>
+        <line x1="50" y1="18" x2="50" y2="88"
+          stroke="#5a9050" stroke-width="2" opacity="0.7"/>
+      </svg>`,
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="55" rx="22" ry="32"
+          fill="#a8d5a2" opacity="0.8"
+          transform="rotate(-15 50 50)"/>
+        <line x1="50" y1="22" x2="50" y2="85"
+          stroke="#6aab60" stroke-width="1.5" opacity="0.65"/>
+      </svg>`,
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="60" rx="22" ry="35"
+          fill="#fefefe" opacity="0.94"
+          stroke="#b8d4a8" stroke-width="2"
+          transform="rotate(-22 50 50)"/>
+        <ellipse cx="50" cy="58" rx="13" ry="21"
+          fill="#edf7e8" opacity="0.5"
+          transform="rotate(-22 50 50)"/>
+      </svg>`,
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="55" rx="15" ry="30"
+          fill="#27592d" opacity="0.75"
+          transform="rotate(20 50 50)"/>
+        <ellipse cx="50" cy="52" rx="9" ry="19"
+          fill="#4a8c40" opacity="0.4"
+          transform="rotate(20 50 50)"/>
+      </svg>`,
+    ];
+
+    const isMobile    = window.innerWidth <= 768;
+    const petalCount  = isMobile ? 30 : 25;
+    const minSize     = isMobile ? 28 : 20;
+    const maxSize     = isMobile ? 45 : 35;
+
+    for (let i = 0; i < petalCount; i++) {
+      const wrapper    = document.createElement('div');
+      wrapper.classList.add('petal');
+      const svgContent = petalSVGs[Math.floor(Math.random() * petalSVGs.length)];
+      const blob       = new Blob([svgContent], { type: 'image/svg+xml' });
+      const url        = URL.createObjectURL(blob);
+      const img        = document.createElement('img');
+      img.src          = url;
+      wrapper.appendChild(img);
+      const size = minSize + Math.random() * (maxSize - minSize);
+      wrapper.style.left              = Math.random() * 100 + 'vw';
+      wrapper.style.width             = size + 'px';
+      wrapper.style.height            = size + 'px';
+      wrapper.style.opacity           = (0.75 + Math.random() * 0.25).toString();
+      wrapper.style.animationDuration = (7 + Math.random() * 10) + 's';
+      wrapper.style.animationDelay    = (Math.random() * 12) + 's';
+      petalsContainer.appendChild(wrapper);
+    }
+  </script>
+</body>
+</html>

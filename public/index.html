@@ -19,11 +19,11 @@
       overflow-x: hidden;
     }
 
-    .card {
+        .card {
       position: relative;
       z-index: 1;
       background: rgba(255, 255, 255, 0.92);
-      border: 1px solid #d4e6c3;
+      border: 2px solid #1a6b45;
       border-radius: 20px;
       padding: 60px 50px;
       max-width: 600px;
@@ -32,6 +32,37 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.08);
       margin: 40px auto;
     }
+        /* ===== DECORATIVE FRAME ===== */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      right: 6px;
+      bottom: 6px;
+      border: 1px solid #1a6b45;
+      border-radius: 16px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== CORNER DECORATIONS ===== */
+    .corner {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      z-index: 2;
+    }
+
+    .corner svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .corner-tl { top: 10px;  left: 10px;  }
+    .corner-tr { top: 10px;  right: 10px; transform: rotate(90deg);  }
+    .corner-bl { bottom: 10px; left: 10px;  transform: rotate(-90deg); }
+    .corner-br { bottom: 10px; right: 10px; transform: rotate(180deg); }
 
       .welcome-label {
       font-family: 'Great Vibes', cursive;
@@ -56,22 +87,32 @@
       margin: -5px 0;
     }
 
-    .divider {
+       .divider {
       display: flex;
       align-items: center;
       gap: 12px;
       margin: 20px auto;
-      max-width: 300px;
+      max-width: 500px;
     }
 
-    .divider::before,
-    .divider::after {
-      content: '';
+    .divider-line {
       flex: 1;
       height: 1px;
       background: linear-gradient(to right, transparent, #b8d4a8, transparent);
     }
 
+    .divider-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bouquet-img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      transform: rotate(45deg);
+    }
     /* ===== MESSAGE ===== */
     .message {
       font-family: 'Great Vibes', cursive;
@@ -276,7 +317,84 @@
 <body>
   <div id="petals"></div>
 
-  <div class="card">
+    <div class="card">
+
+    <!-- Corner Decorations -->
+    <div class="corner corner-tl">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 90 L10 10 L90 10" 
+          fill="none" 
+          stroke="#1a6b45" 
+          stroke-width="6" 
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+        <path d="M10 10 Q30 10 30 30" 
+          fill="none" 
+          stroke="#1a6b45" 
+          stroke-width="3"
+          stroke-linecap="round"/>
+        <circle cx="10" cy="10" r="5" fill="#1a6b45"/>
+        <circle cx="90" cy="10" r="3" fill="#1a6b45"/>
+        <circle cx="10" cy="90" r="3" fill="#1a6b45"/>
+      </svg>
+    </div>
+
+    <div class="corner corner-tr">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 90 L10 10 L90 10" 
+          fill="none" 
+          stroke="#1a6b45" 
+          stroke-width="6" 
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+        <path d="M10 10 Q30 10 30 30" 
+          fill="none" 
+          stroke="#1a6b45" 
+          stroke-width="3"
+          stroke-linecap="round"/>
+        <circle cx="10" cy="10" r="5" fill="#1a6b45"/>
+        <circle cx="90" cy="10" r="3" fill="#1a6b45"/>
+        <circle cx="10" cy="90" r="3" fill="#1a6b45"/>
+      </svg>
+    </div>
+
+    <div class="corner corner-bl">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 90 L10 10 L90 10" 
+          fill="none" 
+          stroke="#1a6b45" 
+          stroke-width="6" 
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+        <path d="M10 10 Q30 10 30 30" 
+          fill="none" 
+          stroke="#1a6b45" 
+          stroke-width="3"
+          stroke-linecap="round"/>
+        <circle cx="10" cy="10" r="5" fill="#1a6b45"/>
+        <circle cx="90" cy="10" r="3" fill="#1a6b45"/>
+        <circle cx="10" cy="90" r="3" fill="#1a6b45"/>
+      </svg>
+    </div>
+
+    <div class="corner corner-br">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 90 L10 10 L90 10" 
+          fill="none" 
+          stroke="#1a6b45" 
+          stroke-width="6" 
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+        <path d="M10 10 Q30 10 30 30" 
+          fill="none" 
+          stroke="#1a6b45" 
+          stroke-width="3"
+          stroke-linecap="round"/>
+        <circle cx="10" cy="10" r="5" fill="#1a6b45"/>
+        <circle cx="90" cy="10" r="3" fill="#1a6b45"/>
+        <circle cx="10" cy="90" r="3" fill="#1a6b45"/>
+      </svg>
+    </div>
 
     <p class="welcome-label">✦ Welcome to Moyassar & Mariam's Wedding ✦</p>
 
@@ -286,8 +404,16 @@
       Mariam
     </div>
 
-    <div class="divider">
-      <span>🌿</span>
+        <div class="divider">
+      <span class="divider-line"></span>
+      <span class="divider-icon">
+        <img
+          src="bouquet.png"
+          alt="Wedding Bouquet"
+          class="bouquet-img"
+          onerror="this.style.display='none'"/>
+      </span>
+      <span class="divider-line"></span>
     </div>
 
     <!-- ===== ONE PARAGRAPH MESSAGE ===== -->
@@ -329,7 +455,7 @@
 
   <script>
     // ⚠️ YOUR APPS SCRIPT URL
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1LAexYbomimgh-HhPUmG2oC5KZW_1ZpCqEuGuBAWR81BDcrjS9KL225B5V5637lVI/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwHJtvSfwrRqf06WWVjmYvtBAzi5dCHcSQUawF7LJ7FMBT8HHyBmbQ7_OIClyoCGlDl9w/exec';
 
     // ===== WHITE & GREEN PETALS =====
     const petalsContainer = document.getElementById('petals');

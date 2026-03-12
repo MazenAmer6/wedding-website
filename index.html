@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Moyassar & Mariam 💍</title>
+  <title>Moyassar & Mariam's Wedding 💍</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -19,27 +19,6 @@
       overflow-x: hidden;
     }
 
-    .leaf-top-left {
-      position: fixed;
-      top: -10px;
-      left: -10px;
-      width: 280px;
-      opacity: 0.85;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .leaf-bottom-right {
-      position: fixed;
-      bottom: -10px;
-      right: -10px;
-      width: 280px;
-      opacity: 0.85;
-      transform: rotate(180deg);
-      pointer-events: none;
-      z-index: 0;
-    }
-
     .card {
       position: relative;
       z-index: 1;
@@ -51,12 +30,12 @@
       width: 90%;
       text-align: center;
       box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+      margin: 40px auto;
     }
 
-    .welcome-label {
-      font-size: 0.85rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
+      .welcome-label {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.0rem;
       color: #7aab6d;
       margin-bottom: 10px;
     }
@@ -93,43 +72,18 @@
       background: linear-gradient(to right, transparent, #b8d4a8, transparent);
     }
 
+    /* ===== MESSAGE ===== */
     .message {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: #666;
-      font-weight: 300;
-      max-width: 420px;
-      margin: 0 auto 10px;
-      font-style: italic;
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.75rem;
+      line-height: 2;
+      color: #3a3a3a;
+      max-width: 460px;
+      margin: 0 auto 30px;
     }
 
     .message strong {
-      color: #7aab6d;
-      font-style: normal;
-      font-weight: 400;
-    }
-
-    .event-details {
-      background: linear-gradient(135deg, #f0f7ec, #fdfaf6);
-      border: 1px solid #d4e6c3;
-      border-radius: 12px;
-      padding: 16px 24px;
-      margin: 20px auto;
-      max-width: 380px;
-      font-size: 0.82rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #6a8c5e;
-    }
-
-    .event-details span { display: block; margin: 4px 0; }
-
-    .upload-title {
-      font-size: 0.85rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #9aab8d;
-      margin: 30px 0 16px;
+      color: #27592d;
     }
 
     .btn-group {
@@ -143,23 +97,25 @@
     .btn {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
-      padding: 14px 30px;
+      padding: 14px 34px;
       border-radius: 50px;
-      font-size: 0.9rem;
-      font-family: 'Lato', sans-serif;
-      font-weight: 400;
-      letter-spacing: 1.5px;
+      font-size: 1.4rem;
+      font-family: 'Great Vibes', cursive;
       cursor: pointer;
       border: none;
       transition: all 0.3s ease;
-      text-transform: uppercase;
     }
 
-    .btn-photos {
-      background: linear-gradient(135deg, #7aab6d, #5a9050);
+        .btn-photos {
+      background: #27592d;
       color: white;
       box-shadow: 0 6px 20px rgba(122, 171, 109, 0.35);
+      font-family: 'Lato', sans-serif !important;
+      font-size: 0.85rem !important;
+      letter-spacing: 3px !important;
+      text-transform: uppercase !important;
     }
 
     .btn-photos:hover {
@@ -167,15 +123,19 @@
       box-shadow: 0 10px 28px rgba(122, 171, 109, 0.5);
     }
 
-    .btn-videos {
-      background: linear-gradient(135deg, #a8c5a0, #7aab6d);
+        .btn-videos {
+      background: #27592d;
       color: white;
       box-shadow: 0 6px 20px rgba(168, 197, 160, 0.4);
+      font-family: 'Lato', sans-serif !important;
+      font-size: 0.85rem !important;
+      letter-spacing: 3px !important;
+      text-transform: uppercase !important;
     }
 
     .btn-videos:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 28px rgba(168, 197, 160, 0.55);
+      box-shadow: 0 10px 28px #a8c5a08c;
     }
 
     #photoInput, #videoInput { display: none; }
@@ -219,11 +179,10 @@
 
     .status.error { color: #c0605a; }
 
-    .footer {
+     .footer {
+      font-family: 'Great Vibes', cursive;
       margin-top: 30px;
-      font-size: 0.72rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      font-size: 1.4rem;
       color: #c0c8b8;
     }
 
@@ -245,25 +204,71 @@
 
     .toast.show { transform: translateX(-50%) translateY(0); }
 
+    /* ===== PETALS ===== */
     .petal {
       position: fixed;
-      top: -20px;
-      font-size: 1.2rem;
-      animation: fall linear infinite;
+      top: -60px;
       pointer-events: none;
-      z-index: 0;
-      opacity: 0.6;
+      z-index: 2;
+      animation: fall linear infinite;
+    }
+
+    .petal img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
     }
 
     @keyframes fall {
-      0%   { transform: translateY(-20px) rotate(0deg); opacity: 0.6; }
-      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+      0% {
+        transform: translateY(-60px) rotate(0deg) scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(50vh) rotate(180deg) translateX(20px) scale(0.9);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg) translateX(-15px) scale(0.7);
+        opacity: 0;
+      }
     }
 
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 480px) {
-      .card { padding: 40px 28px; }
+      .card {
+        padding: 40px 24px;
+        margin: 20px auto;
+        width: 92%;
+      }
       .names { font-size: 3.2rem; }
-      .btn { padding: 12px 22px; font-size: 0.8rem; }
+      .message { font-size: 1.45rem; }
+         .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 34px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-family: 'Lato', sans-serif;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+    }
+      .btn-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      .petal { opacity: 1 !important; }
+    }
+
+    @media (max-width: 360px) {
+      .names  { font-size: 2.8rem; }
+      .message { font-size: 1.25rem; }
     }
   </style>
 </head>
@@ -272,7 +277,8 @@
   <div id="petals"></div>
 
   <div class="card">
-    <p class="welcome-label">✦ Welcome to ✦</p>
+
+    <p class="welcome-label">✦ Welcome to Moyassar & Mariam's Wedding ✦</p>
 
     <div class="names">
       Moyassar
@@ -284,29 +290,22 @@
       <span>🌿</span>
     </div>
 
+    <!-- ===== ONE PARAGRAPH MESSAGE ===== -->
     <p class="message">
-      Every love story is beautiful,<br/>
-      but <strong>ours is our favorite.</strong><br/><br/>
-      We're so grateful you're here to celebrate<br/>
-      this magical chapter with us. 💚
+      Some of the most beautiful moments are the ones we didn't see.
+      We would love to see our wedding through your eyes.
+      <strong>Please share your photos and videos with us
+      so these memories can live on forever.</strong>
     </p>
 
-    <div class="event-details">
-      <span>Saturday · March 21 · 2026</span>
-      <span>5 : 00 PM</span>
-      <span>Villa Vida, King Mariout</span>
-    </div>
-
-    <p class="upload-title">📸 Share Your Memories With Us</p>
-
     <div class="btn-group">
-      <button class="btn btn-photos" 
+      <button class="btn btn-photos"
         onclick="document.getElementById('photoInput').click()">
-        🌸 Upload Photos
+        Upload Photos
       </button>
-      <button class="btn btn-videos" 
+      <button class="btn btn-videos"
         onclick="document.getElementById('videoInput').click()">
-        🎥 Upload Videos
+        Upload Videos
       </button>
     </div>
 
@@ -328,25 +327,155 @@
 
   <div class="toast" id="toast">✅ Uploaded Successfully!</div>
 
-    <script>
-    // ⚠️ PASTE YOUR APPS SCRIPT URL BETWEEN THE QUOTES BELOW
-    const SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_URL_HERE/exec';
+  <script>
+    // ⚠️ YOUR APPS SCRIPT URL
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1LAexYbomimgh-HhPUmG2oC5KZW_1ZpCqEuGuBAWR81BDcrjS9KL225B5V5637lVI/exec';
 
-    // Falling petals
+    // ===== WHITE & GREEN PETALS =====
     const petalsContainer = document.getElementById('petals');
-    const petalEmojis = ['🌸', '🌿', '🍃', '🌼'];
-    for (let i = 0; i < 18; i++) {
-      const p = document.createElement('div');
-      p.classList.add('petal');
-      p.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
-      p.style.left = Math.random() * 100 + 'vw';
-      p.style.animationDuration = (6 + Math.random() * 10) + 's';
-      p.style.animationDelay = (Math.random() * 10) + 's';
-      p.style.fontSize = (0.8 + Math.random() * 1.2) + 'rem';
-      petalsContainer.appendChild(p);
+
+    const petalSVGs = [
+
+      // White petal 1
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="58" rx="28" ry="42"
+          fill="#ffffff" opacity="0.95"
+          stroke="#d4e6c3" stroke-width="2"
+          transform="rotate(-12 50 50)"/>
+        <ellipse cx="50" cy="56" rx="16" ry="26"
+          fill="#f0f7ec" opacity="0.6"
+          transform="rotate(-12 50 50)"/>
+      </svg>`,
+
+      // White petal 2
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="58" rx="24" ry="38"
+          fill="#ffffff" opacity="0.92"
+          stroke="#c8e0b8" stroke-width="1.5"
+          transform="rotate(18 50 50)"/>
+        <ellipse cx="50" cy="56" rx="14" ry="23"
+          fill="#f5faf2" opacity="0.5"
+          transform="rotate(18 50 50)"/>
+      </svg>`,
+
+      // White petal 3
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="60" rx="22" ry="35"
+          fill="#fefefe" opacity="0.94"
+          stroke="#b8d4a8" stroke-width="2"
+          transform="rotate(-22 50 50)"/>
+        <ellipse cx="50" cy="58" rx="13" ry="21"
+          fill="#edf7e8" opacity="0.5"
+          transform="rotate(-22 50 50)"/>
+      </svg>`,
+
+      // Cream white petal
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="58" rx="26" ry="40"
+          fill="#f8fff5" opacity="0.93"
+          stroke="#d0e8c0" stroke-width="1.5"
+          transform="rotate(8 50 50)"/>
+        <ellipse cx="50" cy="56" rx="15" ry="24"
+          fill="#eef8e8" opacity="0.45"
+          transform="rotate(8 50 50)"/>
+      </svg>`,
+
+      // Green leaf 1
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="55" rx="18" ry="38"
+          fill="#7aab6d" opacity="0.85"
+          transform="rotate(5 50 50)"/>
+        <line x1="50" y1="18" x2="50" y2="88"
+          stroke="#5a9050" stroke-width="2"
+          opacity="0.7"/>
+      </svg>`,
+
+      // Green leaf 2
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="55" rx="22" ry="32"
+          fill="#a8d5a2" opacity="0.8"
+          transform="rotate(-15 50 50)"/>
+        <line x1="50" y1="22" x2="50" y2="85"
+          stroke="#6aab60" stroke-width="1.5"
+          opacity="0.65"/>
+      </svg>`,
+
+      // Dark green leaf
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="55" rx="15" ry="30"
+          fill="#27592d" opacity="0.75"
+          transform="rotate(20 50 50)"/>
+        <ellipse cx="50" cy="52" rx="9" ry="19"
+          fill="#4a8c40" opacity="0.4"
+          transform="rotate(20 50 50)"/>
+      </svg>`,
+
+      // Light green leaf
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="55" rx="20" ry="35"
+          fill="#c5e8b0" opacity="0.85"
+          transform="rotate(-8 50 50)"/>
+        <line x1="50" y1="20" x2="50" y2="86"
+          stroke="#7aab6d" stroke-width="1.5"
+          opacity="0.65"/>
+      </svg>`,
+
+      // Sage green petal
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <ellipse cx="50" cy="58" rx="24" ry="38"
+          fill="#b2d8a8" opacity="0.78"
+          transform="rotate(-18 50 50)"/>
+        <ellipse cx="50" cy="56" rx="13" ry="22"
+          fill="#d0eac8" opacity="0.45"
+          transform="rotate(-18 50 50)"/>
+      </svg>`,
+
+      // White round petal
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+        <path d="M50 12 Q72 28 76 56 Q70 82 50 90
+                 Q30 82 24 56 Q28 28 50 12Z"
+          fill="#ffffff" opacity="0.93"
+          stroke="#c8ddb8" stroke-width="1.5"/>
+        <path d="M50 22 Q68 36 70 58 Q64 78 50 84
+                 Q36 78 30 58 Q32 36 50 22Z"
+          fill="#f0f8ec" opacity="0.4"/>
+      </svg>`,
+
+    ];
+
+    // ===== DETECT MOBILE =====
+    const isMobile    = window.innerWidth <= 768;
+    const petalCount  = isMobile ? 30 : 25;
+    const minSize     = isMobile ? 28 : 20;
+    const maxSize     = isMobile ? 45 : 35;
+    const minDuration = isMobile ? 6  : 7;
+    const maxDuration = isMobile ? 10 : 10;
+
+    for (let i = 0; i < petalCount; i++) {
+      const wrapper    = document.createElement('div');
+      wrapper.classList.add('petal');
+
+      const svgContent = petalSVGs[Math.floor(Math.random() * petalSVGs.length)];
+      const blob       = new Blob([svgContent], { type: 'image/svg+xml' });
+      const url        = URL.createObjectURL(blob);
+
+      const img  = document.createElement('img');
+      img.src    = url;
+      wrapper.appendChild(img);
+
+      const size = minSize + Math.random() * (maxSize - minSize);
+
+      wrapper.style.left              = Math.random() * 100 + 'vw';
+      wrapper.style.width             = size + 'px';
+      wrapper.style.height            = size + 'px';
+      wrapper.style.opacity           = (0.75 + Math.random() * 0.25).toString();
+      wrapper.style.animationDuration = (minDuration + Math.random() * maxDuration) + 's';
+      wrapper.style.animationDelay    = (Math.random() * 12) + 's';
+
+      petalsContainer.appendChild(wrapper);
     }
 
-    // Upload handler
+    // ===== UPLOAD HANDLER =====
     async function handleUpload(files, type) {
       if (!files || files.length === 0) return;
 
@@ -368,9 +497,8 @@
           `Uploading ${uploaded + 1} of ${total}: ${file.name}`;
 
         try {
-          // Convert file to base64
-          const base64    = await toBase64(file);
-          const fileData  = base64.split(',')[1];
+          const base64   = await toBase64(file);
+          const fileData = base64.split(',')[1];
 
           const response = await fetch(SCRIPT_URL, {
             method : 'POST',
@@ -386,7 +514,10 @@
           if (!result.success) throw new Error(result.error);
 
           uploaded++;
-          progressBar.style.width = ((uploaded / total) * 100) + '%';
+          progressBar.style.width =
+            ((uploaded / total) * 100) + '%';
+          progressLabel.textContent =
+            `✅ Done ${uploaded} of ${total}`;
 
         } catch (err) {
           statusEl.classList.add('error');
@@ -404,16 +535,17 @@
       document.getElementById('videoInput').value = '';
     }
 
-    // Convert file to base64
+    // ===== BASE64 =====
     function toBase64(file) {
       return new Promise((resolve, reject) => {
-        const reader    = new FileReader();
-        reader.onload   = () => resolve(reader.result);
-        reader.onerror  = reject;
+        const reader   = new FileReader();
+        reader.onload  = () => resolve(reader.result);
+        reader.onerror = reject;
         reader.readAsDataURL(file);
       });
     }
 
+    // ===== TOAST =====
     function showToast(msg) {
       const toast = document.getElementById('toast');
       toast.textContent = msg;
