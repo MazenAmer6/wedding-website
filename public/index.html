@@ -618,26 +618,17 @@
       const total = files.length;
       let uploaded = 0;
 
-      for (let file of files) {
+            for (let file of files) {
         progressLabel.textContent =
           `Uploading ${uploaded + 1} of ${total}: ${file.name}`;
 
         try {
-          const base64   = await toBase64(file);
-          const fileData = base64.split(',')[1];
-
-          const response = await fetch(SCRIPT_URL, {
-            method : 'POST',
-            body   : JSON.stringify({
-              fileName : file.name,
-              fileData : fileData,
-              fileType : file.type,
-              type     : type
-            })
-          });
-
-          const result = await response.json();
-          if (!result.success) throw new Error(result.error);
+          // ===== DEMO MODE =====
+          // Simulates upload without
+          // actually sending anything!
+          await new Promise(resolve => 
+            setTimeout(resolve, 1500)
+          );
 
           uploaded++;
           progressBar.style.width =
